@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunda Kateba Victoire • Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fef5f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            color: #14102c;
+        }
+        .portfolio {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .inner {
+            padding: 2rem;
+        }
+        /* Navigation */
+        nav {
+            background: #d0d3df;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #dad6e2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .nav-link {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            color: #221e1e;
+        }
+        .nav-link:hover {
+            background: #f0d6d6;
+            color: #0b17b6;
+        }
+        .nav-link.active {
+            background: #4118b4;
+            color: white;
+        }
+        /* En-tête */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid #c0392b;
+        }
+        .photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            background: #fce8e8;
+        }
+        .title h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0d0e0d;
+        }
+        .badge {
+            background: #fce8e8;
+            color: #0bcf2c;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+        /* Pages */
+        .page {
+            display: none;
+        }
+        .page.active-page {
+            display: block;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #a0321f;
+            margin: 1.5rem 0 1rem 0;
+            border-left: 4px solid #c0392b;
+            padding-left: 0.8rem;
+        }
+        .bio-text {
+            background: #fef9f9;
+            padding: 1.2rem 1.5rem;
+            border-radius: 24px;
+            border: 1px solid #f5e0e0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 0.5rem;
+        }
+        .skill-chip {
+            background: white;
+            border: 1px solid #e6cbcb;
+            padding: 0.4rem 1.1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #131212;
+        }
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-whatsapp, .btn-sms {
+            background: #07c410;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-whatsapp:hover, .btn-sms:hover {
+            background: #962d22;
+        }
+        /* Bouton "Me contacter" de l'accueil */
+        .btn-mecontacter {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .btn-mecontacter:hover {
+            background: #2fd80d;
+        }
+        .timeline-item {
+            margin-bottom: 1.2rem;
+        }
+        .timeline-year {
+            font-weight: 700;
+            color: #c0392b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .timeline-desc {
+            font-size: 0.98rem;
+            margin-top: 0.2rem;
+        }
+        .download-btn {
+            background: #a0531f;
+            color: white !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        .download-btn:hover {
+            background: #10cf30;
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .cv-help {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        .text-center {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #020202;
+            border-top: 1px solid #f0d6d6;
+            padding-top: 1.5rem;
+        }
+        @media (max-width: 700px) {
+            .inner { padding: 1.2rem; }
+            .header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="portfolio">
+    <nav>
+        <button type="button" class="nav-link active" data-page="accueil">Accueil</button>
+        <button type="button" class="nav-link" data-page="biographie">Biographie</button>
+        <button type="button" class="nav-link" data-page="parcours">Parcours</button>
+        <button type="button" class="nav-link" data-page="competences">Compétences</button>
+        <button type="button" class="nav-link" data-page="contact">Contact</button>
+    </nav>
+
+    <div class="inner">
+        <!-- En-tête commun -->
+        <div class="header">
+    <img src="photo.jpg" alt="Photo de Lunda Kateba Victoire" style="width:120px; height:120px; border-radius:50%; object-fit:cover;">
+    
+    <div class="title">
+        <h1>Lunda Kateba Victoire</h1>
+        <div class="badge">Étudiant en Informatique - ISCI Likasi</div>
+    </div>
+</div>
+
+        <!-- PAGE ACCUEIL -->
+        <div id="page-accueil" class="page active-page">
+            <div class="section-title">👋 Bienvenue</div>
+            <div class="bio-text">
+                Je suis un étudiant passionné par l'électricité et l'informatique. Découvrez mon parcours, mes compétences et contactez-moi facilement.
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn-mecontacter" id="gotoContactBtn">📩 Me contacter</button>
+            </div>
+        </div>
+
+        <!-- PAGE BIOGRAPHIE -->
+        <div id="page-biographie" class="page">
+            <div class="section-title">📖 Biographie</div>
+            <div class="bio-text">
+                Je suis un étudiant motivé, originaire de <strong>Vyombo</strong>, où j’ai commencé mon parcours scolaire en électricité (1ere jusqu'a 5e secondaire). Après avoir terminé mes études secondaires en électricité à <strong>IT Kalunga</strong>, je poursuis actuellement des études universitaires en <strong>informatique à ISCI Likasi</strong>. Passionné par les nouvelles technologies et le développement personnel, je cherche à acquérir des compétences solides pour contribuer au développement de ma communauté.
+            </div>
+        </div>
+
+        <!-- PAGE PARCOURS -->
+        <div id="page-parcours" class="page">
+            <div class="section-title">📚 Mon parcours</div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024 – aujourd’hui</div>
+                <div class="timeline-desc">Études universitaires en <strong>Informatique</strong> – ISCI Likasi</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022 – 2024</div>
+                <div class="timeline-desc">Fin du secondaire (6e Électricité) – <strong>INSTITUT KALUNGA</strong> (diplômé)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2016 – 2022</div>
+                <div class="timeline-desc">Cycle secondaire – <strong>Vyombo</strong> (1ere jusqu'à 5e Électricité)</div>
+            </div>
+        </div>
+
+        <!-- PAGE COMPÉTENCES -->
+        <div id="page-competences" class="page">
+            <div class="section-title">🧠 Compétences</div>
+            <div class="skills-wrapper">
+                <span class="skill-chip">⚡ Électricité (bases)</span>
+                <span class="skill-chip">💻 Informatique de base</span>
+                <span class="skill-chip">🤝 Travail en équipe</span>
+                <span class="skill-chip">🗣️ Communication</span>
+                <span class="skill-chip">🔧 Dépannage matériel</span>
+                <span class="skill-chip">📚 Autodidacte</span>
+            </div>
+        </div>
+
+        <!-- PAGE CONTACT -->
+        <div id="page-contact" class="page">
+            <div class="section-title">📞 Me contacter</div>
+            <div class="contact-line"><span class="skill-chip">📱</span> <strong>+243 970 517 365</strong> (WhatsApp & SMS)</div>
+            <div class="contact-line"><span class="skill-chip">📍</span> Likasi, RDC</div>
+            <div class="contact-line"><span class="skill-chip">✉️</span> lundakateba8@gmail.com</div>
+            
+            <div class="button-group">
+                <a href="https://wa.me/243970517365?text=Bonjour%20Victoire%2C%20je%20découvre%20ton%20portfolio%20et%20je%20souhaite%20échanger." 
+                   class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+                <a href="sms:+243970517365?body=Bonjour%20Victoire%2C%20je%20te%20contacte%20depuis%20ton%20portfolio." 
+                   class="btn-sms" target="_blank" rel="noopener noreferrer">📱 Envoyer un SMS</a>
+            </div>
+            
+            <div class="section-title">📎 Télécharger mon CV</div>
+            <a href="mon-cv.pdf" download="CV_LUNDA_KATEBA_VICTOIRE.pdf" class="download-btn">📄 Télécharger le CV (PDF)</a>
+            <p class="cv-help">Assurez-vous que le fichier <strong>mon-cv.pdf</strong> est dans le même dossier que cette page.</p>
+        </div>
+    </div>
+    <footer>© 2026 Lunda Kateba Victoire – Portfolio étudiant</footer>
+</div>
+
+<script>
+    // Gestion des onglets
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = {
+        accueil: document.getElementById('page-accueil'),
+        biographie: document.getElementById('page-biographie'),
+        parcours: document.getElementById('page-parcours'),
+        competences: document.getElementById('page-competences'),
+        contact: document.getElementById('page-contact')
+    };
+
+    function showPage(pageId) {
+        Object.values(pages).forEach(page => page.classList.remove('active-page'));
+        pages[pageId].classList.add('active-page');
+        navLinks.forEach(btn => {
+            if (btn.dataset.page === pageId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    navLinks.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pageId = btn.dataset.page;
+            if (pageId) showPage(pageId);
+        });
+    });
+
+    const gotoContactBtn = document.getElementById('gotoContactBtn');
+    if (gotoContactBtn) {
+        gotoContactBtn.addEventListener('click', () => {
+            showPage('contact');
+        });
+    }
+</script>
+</body>
+</html>
